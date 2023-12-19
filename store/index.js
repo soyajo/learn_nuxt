@@ -27,5 +27,19 @@ export const actions = {
             ...item,
             imageUrl: `${item.imageUrl}?random=${Math.random()}`
         })))
-    }    
+    },
+    /* 
+    데이터를 미리 넣는다. 
+    common 서비스들을 넣으면 될것같다.
+    */
+    // async nuxtServerInit(storeContext, nuxtContext) {
+        // await storeContext.dispatch(FETCH_CART_ITEMS)
+        // const { data } = await fetchCartItems()
+        // storeContext.commit(
+        //     'setCartItems', 
+        //     data.map((item) => ({
+        //         ...item,
+        //         imageUrl: `${item.imageUrl}?random=${Math.random()}`
+        // })))
+    // }
 }

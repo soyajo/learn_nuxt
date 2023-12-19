@@ -1,33 +1,29 @@
 <template>
   <div class="container">
     <h1 class="list-title">카트 페이지</h1>
-    <div class="list-wrapper">
-        <ul>
-            <li class="list-item" v-for="cartItem in $store.state.cartItems" :key="cartItem.id">
-                <div>
-                    <img class="thumbnail" :src="cartItem.imageUrl" alt="cartItem.name">
-                    <div class="description">
-                        <p>{{cartItem.name}}</p>
-                        <span> {{cartItem.price}} </span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="extra-panel">
-            <button type="button">구매하기</button>
-        </div>        
+    <CartList></CartList>
+    <div class="extra-panel">
+        <button type="button">구매하기</button>
     </div>
   </div>
 </template>
 
 <script>
 // import { findAllByCartItems } from '@/api/index'
-import { FETCH_CART_ITEMS } from '@/store'
+// import { FETCH_CART_ITEMS } from '@/store'
+import CartList from '@/components/CartList.vue'
 
 export default {
-    async asyncData({store}) { 
-        await store.dispatch(FETCH_CART_ITEMS)
-    }
+    components : {
+        CartList
+    },
+    /* 
+        nuxtServerInit 을 사용하여 asyncData 보다 빨리 작동하여 사용할 필요가 없다.
+     */
+    // async asyncData({store}) { 
+        // await store.dispatch(FETCH_CART_ITEMS)
+    // }
+
 }
 </script>
 
