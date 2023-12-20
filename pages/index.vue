@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 // import ProductList from '~/components/ProductList.vue';
 import SearchInput from '@/components/SearchInput.vue'
-import { fetchProductsByKeyword } from '@/api/index'
+import { fetchProductsByKeyword, fetchProduct } from '@/api/index'
 
 
 export default {
@@ -48,7 +48,7 @@ export default {
    * this 가 안된다.(view 이전이라?)
    */
   async asyncData() {
-    const response = await axios.get('http://localhost:3000/products')
+    const response = await fetchProduct()
     // console.log(response)
     // this.products = response.data
     const products = response.data.map(

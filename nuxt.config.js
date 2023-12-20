@@ -34,7 +34,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  // env setting
   server: {
-    port: 4000
+    port: process.env.NODE_ENV === 'production' ? null : 5000
+  },
+
+  // env config
+  env: {
+    // baseUrl: process.env.NODE_ENV === 'production' ? null : 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   }
 }
