@@ -23,24 +23,36 @@ import { fetchProductById, createCartItem } from '@/api/index'
 
 
 export default {
-    async asyncData({params}) {
-        
-        const response = await fetchProductById(params.id)
-        const product = response.data
-        return { product }
-    },
+
+  
+  async asyncData({params}) {
+      
+      const response = await fetchProductById(params.id)
+      const product = response.data
+      return { product }
+  },
+  head: {
+    title: 'Shopping Item Detail',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: '이 상품은 ~~입니다.',
+      },
+    ],
+  },
     // created() {
     //     console.log(this.$route.params.id)
     //     fetchProductById()
     // },
-    methods: {
-        async addToCart() {
-            const response = await createCartItem(this.product)
-            console.log(response)
-            this.$store.commit('addCartItem', this.product)
-            this.$router.push(`/cart`)
-        },
-    }
+  methods: {
+      async addToCart() {
+          const response = await createCartItem(this.product)
+          console.log(response)
+          this.$store.commit('addCartItem', this.product)
+          this.$router.push(`/cart`)
+      },
+  }
 }
 </script>
 
